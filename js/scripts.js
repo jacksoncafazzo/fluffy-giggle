@@ -1,9 +1,9 @@
-// function TaskAdd(task) {
-//   this.task = task;
-// }
+function TaskAdd(task) {
+  this.task = task;
+}
 
-var toListAction = function(task) {
-  return "<li>" + task + "</li>";
+TaskAdd.prototype.toListAction = function() {
+  return "<li>" + this.task + "</li>";
 }
 
 $(document).ready(function() {
@@ -11,10 +11,11 @@ $(document).ready(function() {
     debugger;
 
   var inputtedListItem = $("input#taskInput").val();
-  var taskForList = toListAction(inputtedListItem);
+  var newTask = new TaskAdd(inputtedListItem);
+
     $("#finalList").show();
 
-    $("ul#listResults").append(taskForList);
+    $("ul#listResults").append(newTask.toListAction());
 
   event.preventDefault();
 
